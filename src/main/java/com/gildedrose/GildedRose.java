@@ -9,14 +9,14 @@ class GildedRose {
 
     public void updateQuality() {
         for (int i = 0; i < items.length; i++) {
-            if (!items[i].name.equals("Aged Brie")
-                    && !items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                if (items[i].quality > 0) {
-                    if (!items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
-                        items[i].quality = items[i].quality - 1;
-                    }
-                }
-            } else {
+            Item item = items[i];
+            boolean isAgedBrie = item.name.equals("Aged Brie");
+            boolean isBackstagePass = item.name.equals("Backstage passes to a TAFKAL80ETC concert");
+            boolean isSulfuras = item.name.equals("Sulfuras, Hand of Ragnaros");
+
+            if (!isAgedBrie && !isBackstagePass && item.quality > 0 && !isSulfuras) {
+                item.quality--;
+
                 if (items[i].quality < 50) {
                     items[i].quality = items[i].quality + 1;
 
